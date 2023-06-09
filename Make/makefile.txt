@@ -1,0 +1,12 @@
+﻿Target_05: Target_02 Target_04
+  a_05_01
+  a_05_02
+Target_02: Target_01
+  a_02
+Target_01
+  a_01
+Target_04: Target_02 Target_06
+  a_04
+Target_06: Target_03
+  a_06
+Target_03: Target_02

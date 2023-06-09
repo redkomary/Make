@@ -1,8 +1,15 @@
 ﻿namespace Domain.Entities;
 
-public abstract class Action : IAction
+public class Action : IAction
 {
+	public Action(string name)
+	{
+		Name = name;
+	}
+
+
 	public string Name { get; }
 
-	public abstract void Execute();
+
+	public override string ToString() => Name;
 }

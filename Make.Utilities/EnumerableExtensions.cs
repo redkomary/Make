@@ -9,4 +9,14 @@ public static class EnumerableExtensions
 			action(item);
 		}
 	}
+
+	public static TValue? GetValueOrDefault<TKey, TValue>(
+		this IDictionary<TKey, TValue> dictionary,
+		TKey key,
+		TValue? defaultValue = default)
+	{
+		return dictionary.TryGetValue(key, out TValue? value)
+			? value
+			: defaultValue;
+	}
 }

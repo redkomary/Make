@@ -4,27 +4,66 @@ namespace Domain.Services;
 
 internal class TaskDependenciesBuilder
 {
-	public TaskDependencies Build(ITask task)
+	private readonly IDictionary<ITask, Vertex> _cache = new Dictionary<ITask, Vertex>();
+
+	public IEnumerable<TaskDependencies> Build(ITask task)
 	{
-		var cache = new Dictionary<ITask, TaskDependencies>();
-		BuildRecursively(task, cache);
-		return cache[task];
+		BuildRecursively(task);
+		return _cache.Values.Select(vertex => vertex.Task);
 	}
 
-
-	private static void BuildRecursively(ITask task, IDictionary<ITask, TaskDependencies> cache)
+	private void BuildRecursively(ITask task)
 	{
-		TaskDependencies dependencies;
-		if (!cache.TryAdd(task, dependencies = new TaskDependencies(task)))
-			return;
+		var vertex = new Vertex(task);
+		_cache[task] = vertex;
+		vertex.ProcessingStatus = ProcessingStatus.InProgress;
 
 		foreach (ITask childTask in task.Children)
 		{
-			dependencies.Descendants.Add(childTask);
+			bool cycleFound = _cache.TryGetValue(childTask, out Vertex? childTaskVertex) &&
+			                  childTaskVertex.ProcessingStatus == ProcessingStatus.InProgress;
 
-			BuildRecursively(childTask, cache);
+			if (cycleFound)
+			{
+				throw new InvalidOperationException($"Невозможно выполнить задачу \"{task.Name}\", " +
+				                                    $"из-за циклической ссылки на задачу \"{childTask.Name}\".");
+			}
 
-			cache[childTask].Ancestors.Add(task);
+			vertex.AddOutComingTask(childTask);
+
+			if (childTaskVertex == null || childTaskVertex.ProcessingStatus == ProcessingStatus.NotStarted)
+			{
+				BuildRecursively(childTask);
+			}
+
+			_cache[childTask].AddInComingTask(task);
 		}
+
+		_cache[task].ProcessingStatus = ProcessingStatus.Done;
+	}
+
+
+	private enum ProcessingStatus
+	{
+		NotStarted,
+		InProgress,
+		Done
+	}
+
+	private class Vertex
+	{
+		public Vertex(ITask task)
+		{
+			Task = new TaskDependencies(task);
+		}
+
+		public TaskDependencies Task { get; }
+
+		public ProcessingStatus ProcessingStatus { get; set; }
+
+
+		public void AddOutComingTask(ITask task) => Task.OutComing.Add(task);
+
+		public void AddInComingTask(ITask task) => Task.InComing.Add(task);
 	}
 }

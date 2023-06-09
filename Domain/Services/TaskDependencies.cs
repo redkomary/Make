@@ -22,15 +22,15 @@ internal class TaskDependencies
 	/// <summary>
 	/// Готова к исполнению.
 	/// </summary>
-	public bool ReadyToExecute => !Descendants.Any();
+	public bool ReadyToExecute => !OutComing.Any();
 
 	/// <summary>
 	/// Задачи, от которых напрямую зависит текущая.
 	/// </summary>
-	public HashSet<ITask> Descendants { get; } = new();
+	public HashSet<ITask> OutComing { get; } = new();
 
 	/// <summary>
 	/// Задачи, которые напрямую зависят от текущей.
 	/// </summary>
-	public HashSet<ITask> Ancestors { get; } = new();
+	public HashSet<ITask> InComing { get; } = new();
 }
