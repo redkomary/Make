@@ -1,6 +1,6 @@
-﻿namespace Domain.Entities;
+﻿namespace Make.Domain.Entities;
 
-public interface ITask
+public interface ITask : IWork
 {
 	public string Name { get; }
 

@@ -1,8 +1,8 @@
-﻿using Domain.Entities;
+﻿using Make.Domain.Entities;
 
 namespace Make.ImportTasks;
 
 public interface ITasksImporter
 {
-	public IAsyncEnumerable<ITask> Import();
+	public IEnumerable<ITask> Import(string filePath);
 }

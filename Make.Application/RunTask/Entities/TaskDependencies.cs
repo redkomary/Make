@@ -1,6 +1,6 @@
-﻿using Domain.Entities;
+﻿using Make.Domain.Entities;
 
-namespace Domain.Services;
+namespace Make.Application.RunTask.Entities;
 
 internal class TaskDependencies
 {

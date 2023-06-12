@@ -1,6 +1,4 @@
-﻿using Make.ImportTasks.FromFile.Services;
-
-namespace Make.ImportTasks.FromFile;
+﻿namespace Make.ImportTasks.FromFile.Entities;
 
 internal class TaskInfo
 {

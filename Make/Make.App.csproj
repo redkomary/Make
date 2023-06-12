@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Domain\Make.Domain.csproj" />
+    <ProjectReference Include="..\Make.Application\Make.Application.csproj" />
+    <ProjectReference Include="..\Make.Console\Make.ConsoleInteraction.csproj" />
     <ProjectReference Include="..\Make.ImportTasks.FromFile\Make.ImportTasks.FromFile.csproj" />
   </ItemGroup>
 

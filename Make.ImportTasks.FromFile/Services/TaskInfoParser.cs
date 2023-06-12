@@ -1,4 +1,6 @@
-﻿namespace Make.ImportTasks.FromFile.Services;
+﻿using Make.ImportTasks.FromFile.Entities;
+
+namespace Make.ImportTasks.FromFile.Services;
 
 internal class TaskInfoParser
 {

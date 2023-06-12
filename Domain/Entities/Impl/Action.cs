@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities;
+﻿namespace Make.Domain.Entities.Impl;
 
 public class Action : IAction
 {

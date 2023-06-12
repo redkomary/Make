@@ -1,8 +1,9 @@
-﻿using Domain.Entities;
+﻿using Make.Domain.Entities;
+using Make.ImportTasks.FromFile.Entities;
 using Make.Utilities;
 
-using Action = Domain.Entities.Action;
-using Task   = Domain.Entities.Task;
+using Action = Make.Domain.Entities.Impl.Action;
+using Task   = Make.Domain.Entities.Impl.Task;
 
 namespace Make.ImportTasks.FromFile.Services;
 

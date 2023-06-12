@@ -1,16 +1,22 @@
 ﻿using System.Collections.Concurrent;
-using Domain.Entities;
+using Make.Application.RunTask.Entities;
+using Make.Domain.Entities;
 using Make.Utilities;
-
 using TTask = System.Threading.Tasks.Task;
 
-namespace Domain.Services;
+namespace Make.Application.RunTask.Services;
 
 internal class TasksRunner
 {
 	private readonly IDictionary<ITask, TaskDependencies> _allTasks = new Dictionary<ITask, TaskDependencies>();
 	private readonly ConcurrentQueue<TaskDependencies> _queue = new();
-	private readonly Entities.TaskExecutor _taskExecutor = new();
+	private readonly IExecutor<ITask> _taskExecutor;
+
+
+	public TasksRunner(IExecutor<ITask> taskExecutor)
+	{
+		_taskExecutor = taskExecutor;
+	}
 
 
 	public async TTask Run(IEnumerable<TaskDependencies> tasks, CancellationToken cancellationToken)

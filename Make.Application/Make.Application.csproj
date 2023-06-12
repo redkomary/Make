@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Make.Domain.csproj" />
+    <ProjectReference Include="..\Make.ImportTasks\Make.ImportTasks.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,16 +1,19 @@
-﻿using Domain.Entities;
+﻿using Make.Application.RunTask.Entities;
+using Make.Domain.Entities;
 
-namespace Domain.Services;
+namespace Make.Application.RunTask.Services;
 
 internal class TaskDependenciesBuilder
 {
 	private readonly IDictionary<ITask, Vertex> _cache = new Dictionary<ITask, Vertex>();
+
 
 	public IEnumerable<TaskDependencies> Build(ITask task)
 	{
 		BuildRecursively(task);
 		return _cache.Values.Select(vertex => vertex.Task);
 	}
+
 
 	private void BuildRecursively(ITask task)
 	{

@@ -1,8 +1,10 @@
-﻿using Domain.Entities;
+﻿using Make.Domain.Entities;
+using Make.ImportTasks.FromFile.Entities;
+using Make.ImportTasks.FromFile.Services;
 
-namespace Make.ImportTasks.FromFile.Services;
+namespace Make.ImportTasks.FromFile;
 
-public class TasksImporterFromFile
+public class TasksImporterFromFile : ITasksImporter
 {
 	private readonly FileReader _fileReader = new();
 	private readonly TaskInfoParser _parser = new();

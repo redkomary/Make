@@ -1,4 +1,4 @@
-﻿namespace Make.ImportTasks.FromFile;
+﻿namespace Make.ImportTasks.FromFile.Entities;
 
 internal class ActionInfo
 {
@@ -7,5 +7,5 @@ internal class ActionInfo
 		Name = name;
 	}
 
-	public string Name { get; set; }
+	public string Name { get; }
 }

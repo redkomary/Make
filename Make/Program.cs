@@ -1,11 +1,12 @@
-﻿using Domain.Entities;
-using Domain.Services;
-using Make.ImportTasks.FromFile.Services;
-using Action = Domain.Entities.Action;
-using Task = Domain.Entities.Task;
-using TTask = System.Threading.Tasks.Task;
+﻿using Make.Application.Import.Controllers;
+using Make.Application.RunTask.Controllers;
+using Make.Domain.Entities;
+using Make.ImportTasks.FromFile;
 
-namespace Make;
+using TTask = System.Threading.Tasks.Task;
+using CConsole = System.Console;
+
+namespace Make.App;
 
 internal class Program
 {
@@ -13,19 +14,19 @@ internal class Program
 	{
 		try
 		{
-			var importer = new TasksImporterFromFile();
-			IEnumerable<ITask> tasks = importer.Import("makefile.txt");
+			var importTasksController = new ImportTasksController(new TasksImporterFromFile());
+			IEnumerable<ITask> tasks = importTasksController.Import("makefile.txt");
 
-			ITask targetTask = tasks.First(t => t.Name == "Target_05");
+			ITask targetTask = tasks.First(task => task.Name == "Target_05");
 
-			var executor = new Domain.Services.TaskExecutor();
-			await executor.Execute(targetTask, CancellationToken.None);
+			var executor = new RunTaskController(new ConsoleInteraction.Entities.TaskExecutor());
+			await executor.Run(targetTask, CancellationToken.None);
 		}
 		catch (Exception ex)
 		{
-			Console.WriteLine(ex);
+			CConsole.WriteLine(ex);
 		}
 
-		Console.ReadKey();
+		CConsole.ReadKey();
 	}
 }

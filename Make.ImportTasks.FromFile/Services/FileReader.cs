@@ -16,7 +16,10 @@ public class FileReader
 		foreach (string line in lines)
 		{
 			if (string.IsNullOrWhiteSpace(line))
-				throw new ReadLineException("Строка не может быть пустой.", filePath, i + 1);
+			{
+				throw new FormatException($"Ошибка чтения данных из файла \"{filePath}\", строка {i + 1}: " +
+				                          $"Строка не может быть пустой.");
+			}
 
 			bool isNewBlockStarting = !char.IsWhiteSpace(line[0]);
 			if (isNewBlockStarting)

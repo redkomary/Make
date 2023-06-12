@@ -1,8 +1,9 @@
-﻿using Make.Utilities;
+﻿using Make.Domain.Entities;
+using Make.Utilities;
 
-namespace Domain.Entities;
+namespace Make.ConsoleInteraction.Entities;
 
-public class TaskExecutor
+public class TaskExecutor : IExecutor<ITask>
 {
 	private readonly ActionExecutor _actionExecutor = new();
 
