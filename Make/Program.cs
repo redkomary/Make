@@ -2,15 +2,13 @@
 using Make.ImportTasks.FromFile;
 using Microsoft.Extensions.DependencyInjection;
 
-using TTask = System.Threading.Tasks.Task;
-
 namespace Make.ConsoleApp;
 
 internal class Program
 {
-	public static async TTask Main(string[] args)
+	public static async Task Main(string[] args)
 	{
-		args = new[] { "makefile.txt", "Target_05" };
+		//args = new[] { "makefile.txt", "Target_05" };
 
 		try
 		{
