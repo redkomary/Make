@@ -1,15 +1,11 @@
-﻿namespace Make.Domain.Entities.Impl;
+﻿namespace Make.Domain.Entities;
 
-public class Task : ITask
+public abstract class TaskBase : ITask
 {
 	private readonly List<ITask> _children;
 
-	public Task(string name)
-		: this(name, Enumerable.Empty<IAction>())
-	{
-	}
 
-	public Task(string name, IEnumerable<IAction> actions)
+	protected TaskBase(string name, IEnumerable<IAction> actions)
 	{
 		Name = name;
 
@@ -29,6 +25,7 @@ public class Task : ITask
 
 	public void AddChild(ITask child) => _children.Add(child);
 
+	public abstract void Execute();
 
 	public override string ToString() => Name;
 }

@@ -8,13 +8,7 @@ namespace Make.Application.RunTask.Controllers;
 public class RunTaskController
 {
 	private readonly TaskDependenciesBuilder _taskDependenciesBuilder = new();
-	private readonly TasksRunner _runner;
-
-
-	public RunTaskController(IExecutor<ITask> taskExecutor)
-	{
-		_runner = new TasksRunner(taskExecutor);
-	}
+	private readonly TasksRunner _runner = new();
 
 
 	public async Task Run(ITask task, CancellationToken cancellationToken)

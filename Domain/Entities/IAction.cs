@@ -1,7 +1,10 @@
 ﻿namespace Make.Domain.Entities;
 
 // -> Operation
-public interface IAction : IWork
+public interface IAction
 {
 	public string Name { get; }
+
+
+	public void Execute();
 }

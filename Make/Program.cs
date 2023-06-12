@@ -4,9 +4,8 @@ using Make.Domain.Entities;
 using Make.ImportTasks.FromFile;
 
 using TTask = System.Threading.Tasks.Task;
-using CConsole = System.Console;
 
-namespace Make.App;
+namespace Make.ConsoleApp;
 
 internal class Program
 {
@@ -19,14 +18,14 @@ internal class Program
 
 			ITask targetTask = tasks.First(task => task.Name == "Target_05");
 
-			var executor = new RunTaskController(new ConsoleInteraction.Entities.TaskExecutor());
+			var executor = new RunTaskController();
 			await executor.Run(targetTask, CancellationToken.None);
 		}
 		catch (Exception ex)
 		{
-			CConsole.WriteLine(ex);
+			Console.WriteLine(ex);
 		}
 
-		CConsole.ReadKey();
+		Console.ReadKey();
 	}
 }

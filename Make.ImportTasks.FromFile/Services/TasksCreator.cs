@@ -1,15 +1,13 @@
 ﻿using Make.Domain.Entities;
+using Make.Domain.Entities.Impl;
 using Make.ImportTasks.FromFile.Entities;
 using Make.Utilities;
-
-using Action = Make.Domain.Entities.Impl.Action;
-using Task   = Make.Domain.Entities.Impl.Task;
 
 namespace Make.ImportTasks.FromFile.Services;
 
 internal class TasksCreator
 {
-	private readonly IDictionary<string, Task> _tasks = new Dictionary<string, Task>(StringComparer.InvariantCultureIgnoreCase);
+	private readonly IDictionary<string, ITask> _tasks = new Dictionary<string, ITask>(StringComparer.InvariantCultureIgnoreCase);
 	private readonly List<DependencyInfo> _dependencies = new();
 
 
@@ -28,7 +26,7 @@ internal class TasksCreator
 			if (_tasks.ContainsKey(taskInfo.Header.Name))
 				throw new InvalidOperationException($"Задача \"{taskInfo.Header.Name}\" уже загружена. Наименование задачи должно быть уникальным.");
 
-			Task task = CreateTask(taskInfo);
+			ITask task = CreateTask(taskInfo);
 			_tasks[task.Name] = task;
 
 			IEnumerable<DependencyInfo> taskDependencies = CreateTaskDependencies(taskInfo.Header);
@@ -36,15 +34,15 @@ internal class TasksCreator
 		}
 	}
 
-	private Task CreateTask(TaskInfo taskInfo)
+	private ITask CreateTask(TaskInfo taskInfo)
 	{
 		IEnumerable<IAction> actions = taskInfo.Actions.Select(CreateAction);
-		return new Task(taskInfo.Header.Name, actions);
+		return new PrintToConsoleTask(taskInfo.Header.Name, actions);
 	}
 
 	private IAction CreateAction(ActionInfo actionInfo)
 	{
-		return new Action(actionInfo.Name);
+		return new PrintToConsoleAction(actionInfo.Name);
 	}
 
 
@@ -58,9 +56,9 @@ internal class TasksCreator
 	{
 		foreach (DependencyInfo dependencyInfo in _dependencies)
 		{
-			Task dependentTask = _tasks[dependencyInfo.DependentTaskName];
+			ITask dependentTask = _tasks[dependencyInfo.DependentTaskName];
 
-			Task subTask = _tasks.GetValueOrDefault(dependencyInfo.SubTaskName) ??
+			ITask subTask = _tasks.GetValueOrDefault(dependencyInfo.SubTaskName) ??
 				throw new KeyNotFoundException($"Задача \"{dependencyInfo.DependentTaskName}\" зависит от несуществующей задачи \"{dependencyInfo.SubTaskName}\".");
 
 			dependentTask.AddChild(subTask);
