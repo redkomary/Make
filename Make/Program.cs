@@ -1,7 +1,6 @@
-﻿using Make.Application.Import.Controllers;
-using Make.Application.RunTask.Controllers;
-using Make.Domain.Entities;
+﻿using Make.Application;
 using Make.ImportTasks.FromFile;
+using Microsoft.Extensions.DependencyInjection;
 
 using TTask = System.Threading.Tasks.Task;
 
@@ -11,15 +10,12 @@ internal class Program
 {
 	public static async TTask Main(string[] args)
 	{
+		args = new[] { "makefile.txt", "Target_05" };
+
 		try
 		{
-			var importTasksController = new ImportTasksController(new TasksImporterFromFile());
-			IEnumerable<ITask> tasks = importTasksController.Import("makefile.txt");
-
-			ITask targetTask = tasks.First(task => task.Name == "Target_05");
-
-			var executor = new RunTaskController();
-			await executor.Run(targetTask, CancellationToken.None);
+			Application application = InitializeApplication();
+			await application.Run(args);
 		}
 		catch (Exception ex)
 		{
@@ -27,5 +23,29 @@ internal class Program
 		}
 
 		Console.ReadKey();
+	}
+
+
+	private static Application InitializeApplication()
+	{
+		try
+		{
+			ServiceProvider serviceProvider = ConfigureServices();
+			return serviceProvider.GetRequiredService<Application>();
+		}
+		catch (Exception ex)
+		{
+			throw new ApplicationException("Не удалось инициализировать приложение.", ex);
+		}
+	}
+
+	private static ServiceProvider ConfigureServices()
+	{
+		var services = new ServiceCollection();
+		return services
+			.AddApplication()
+			.AddImporter()
+			.AddSingleton<Application>()
+			.BuildServiceProvider();
 	}
 }

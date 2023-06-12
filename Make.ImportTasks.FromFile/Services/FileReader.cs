@@ -1,6 +1,6 @@
 ﻿namespace Make.ImportTasks.FromFile.Services;
 
-public class FileReader
+internal class FileReader
 {
 	public IEnumerable<IReadOnlyList<string>> Read(string filePath)
 	{
