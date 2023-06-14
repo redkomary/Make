@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Make.ImportTasks\Make.ImportTasks.csproj" />
+  </ItemGroup>
+
 </Project>

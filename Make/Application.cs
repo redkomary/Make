@@ -4,11 +4,13 @@ namespace Make.ConsoleApp;
 
 internal class Application
 {
-	private readonly IImportTasksController _importTasksController;
+	private readonly IImportTasksFromFileController _importTasksController;
 	private readonly IRunTaskController _runTaskController;
 
 
-	public Application(IImportTasksController importTasksController, IRunTaskController runTaskController)
+	public Application(
+		IImportTasksFromFileController importTasksController,
+		IRunTaskController runTaskController)
 	{
 		_importTasksController = importTasksController;
 		_runTaskController = runTaskController;

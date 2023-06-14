@@ -1,6 +1,6 @@
 ﻿namespace Make.Application.API;
 
-public interface IImportTasksController
+public interface IImportTasksFromFileController
 {
 	public void Import(string filePath);
 }

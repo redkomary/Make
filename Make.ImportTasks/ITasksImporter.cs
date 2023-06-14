@@ -2,7 +2,8 @@
 
 namespace Make.ImportTasks;
 
-public interface ITasksImporter
+public interface ITasksImporter<in TDataSource>
+	where TDataSource : IDataSource
 {
-	public IEnumerable<ITask> Import(string filePath);
+	public IEnumerable<ITask> ImportFrom(TDataSource source);
 }

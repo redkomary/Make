@@ -7,6 +7,6 @@ public static class DependencyInjection
 	public static IServiceCollection AddImporter(this IServiceCollection services)
 	{
 		return services
-			.AddTransient<ITasksImporter, TasksImporterFromFile>();
+			.AddTransient<ITasksImporter<FilePathDataSource>, TasksImporterFromFile>();
 	}
 }

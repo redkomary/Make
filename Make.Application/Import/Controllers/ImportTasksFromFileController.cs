@@ -2,19 +2,20 @@
 using Make.DataAccess;
 using Make.Domain.Entities;
 using Make.ImportTasks;
+using Make.ImportTasks.FromFile;
 using Make.Utilities;
 
 namespace Make.Application.Import.Controllers;
 
-public class ImportTasksController : IImportTasksController
+public class ImportTasksFromFileController : IImportTasksFromFileController
 {
-	private readonly ITasksImporter _importer;
+	private readonly ITasksImporter<FilePathDataSource> _importer;
 	private readonly IRepository<ITask> _taskRs;
 	private readonly IRepository<IAction> _actionRs;
 
 
-	public ImportTasksController(
-		ITasksImporter importer,
+	public ImportTasksFromFileController(
+		ITasksImporter<FilePathDataSource> importer,
 		IRepository<ITask> taskRs,
 		IRepository<IAction> actionRs)
 	{
@@ -26,7 +27,8 @@ public class ImportTasksController : IImportTasksController
 
 	public void Import(string filePath)
 	{
-		IEnumerable<ITask> tasks = _importer.Import(filePath);
+		var dataSource = new FilePathDataSource(filePath);
+		IEnumerable<ITask> tasks = _importer.ImportFrom(dataSource);
 		foreach (ITask task in tasks)
 		{
 			_taskRs.Create(task);

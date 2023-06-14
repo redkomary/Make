@@ -10,7 +10,7 @@ public static class DependencyInjection
 	public static IServiceCollection AddApplication(this IServiceCollection services)
 	{
 		return services
-			.AddTransient<IImportTasksController, ImportTasksController >()
-			.AddTransient<IRunTaskController ,    RunTaskController>();
+			.AddTransient<IImportTasksFromFileController, ImportTasksFromFileController >()
+			.AddTransient<IRunTaskController , RunTaskController>();
 	}
 }
