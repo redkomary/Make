@@ -1,8 +1,8 @@
 ﻿namespace Make.ImportTasks.FromFile.Entities;
 
-internal class ActionInfo
+internal class OperationInfo
 {
-	public ActionInfo(string name)
+	public OperationInfo(string name)
 	{
 		Name = name;
 	}

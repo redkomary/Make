@@ -4,7 +4,7 @@ public interface ITask : IEntity
 {
 	public string Name { get; }
 
-	public ICollection<IAction> Actions { get; }
+	public ICollection<IOperation> Operations { get; }
 
 	public ICollection<ITask> Children { get; }
 

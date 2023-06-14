@@ -11,11 +11,11 @@ internal class TaskInfoParser
 
 		TaskHeaderInfo header = ParseHeader(lines[0]);
 
-		IEnumerable<ActionInfo> actions = lines
+		IEnumerable<OperationInfo> operations = lines
 			.Skip(1)
-			.Select(ParseAction);
+			.Select(ParseOperation);
 
-		return new TaskInfo(header, actions);
+		return new TaskInfo(header, operations);
 	}
 
 	private TaskHeaderInfo ParseHeader(string str)
@@ -34,9 +34,9 @@ internal class TaskInfoParser
 		return new TaskHeaderInfo(name, dependencies);
 	}
 
-	private ActionInfo ParseAction(string str)
+	private OperationInfo ParseOperation(string str)
 	{
 		string name = str.Trim();
-		return new ActionInfo(name);
+		return new OperationInfo(name);
 	}
 }

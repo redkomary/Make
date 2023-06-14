@@ -1,6 +1,6 @@
 ﻿namespace Make.Domain.Entities.Impl;
 
-public class PrintToConsoleAction : ActionBase
+public class PrintToConsoleOperation : OperationBase
 {
 	public override void Execute()
 	{

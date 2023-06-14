@@ -7,6 +7,6 @@ public class PrintToConsoleTask : TaskBase
 	public override void Execute()
 	{
 		Console.WriteLine(Name);
-		Actions.ForEach(action => action.Execute());
+		Operations.ForEach(operation => operation.Execute());
 	}
 }

@@ -2,14 +2,14 @@
 
 internal class TaskInfo
 {
-	public TaskInfo(TaskHeaderInfo header, IEnumerable<ActionInfo> actions)
+	public TaskInfo(TaskHeaderInfo header, IEnumerable<OperationInfo> operations)
 	{
 		Header = header;
-		Actions = actions;
+		Operations = operations;
 	}
 
 
 	public TaskHeaderInfo Header { get; }
 
-	public IEnumerable<ActionInfo> Actions { get; }
+	public IEnumerable<OperationInfo> Operations { get; }
 }

@@ -36,17 +36,17 @@ internal class TasksCreator
 
 	private ITask CreateTask(TaskInfo taskInfo)
 	{
-		IEnumerable<IAction> actions = taskInfo.Actions.Select(CreateAction);
+		IEnumerable<IOperation> operations = taskInfo.Operations.Select(CreateOperation);
 		return new PrintToConsoleTask
 		{
 			Name = taskInfo.Header.Name,
-			Actions = actions.ToHashSet()
+			Operations = operations.ToHashSet()
 		};
 	}
 
-	private IAction CreateAction(ActionInfo actionInfo)
+	private IOperation CreateOperation(OperationInfo operationInfo)
 	{
-		return new PrintToConsoleAction { Name = actionInfo.Name };
+		return new PrintToConsoleOperation { Name = operationInfo.Name };
 	}
 
 

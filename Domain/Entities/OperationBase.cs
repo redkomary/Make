@@ -1,6 +1,6 @@
 ﻿namespace Make.Domain.Entities;
 
-public abstract class ActionBase : IAction
+public abstract class OperationBase : IOperation
 {
 	public long Id { get; set; }
 

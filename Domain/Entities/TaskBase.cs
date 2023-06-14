@@ -6,7 +6,7 @@ public abstract class TaskBase : ITask
 
 	public string Name { get; set; } = string.Empty;
 
-	public ICollection<IAction> Actions { get; set; } = new List<IAction>();
+	public ICollection<IOperation> Operations { get; set; } = new List<IOperation>();
 
 	public ICollection<ITask> Children { get; set; } = new List<ITask>();
 

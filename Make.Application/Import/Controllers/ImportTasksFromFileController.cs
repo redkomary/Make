@@ -11,17 +11,17 @@ public class ImportTasksFromFileController : IImportTasksFromFileController
 {
 	private readonly ITasksImporter<FilePathDataSource> _importer;
 	private readonly IRepository<ITask> _taskRs;
-	private readonly IRepository<IAction> _actionRs;
+	private readonly IRepository<IOperation> _operationRs;
 
 
 	public ImportTasksFromFileController(
 		ITasksImporter<FilePathDataSource> importer,
 		IRepository<ITask> taskRs,
-		IRepository<IAction> actionRs)
+		IRepository<IOperation> operationRs)
 	{
 		_importer = importer;
 		_taskRs = taskRs;
-		_actionRs = actionRs;
+		_operationRs = operationRs;
 	}
 
 
@@ -32,7 +32,7 @@ public class ImportTasksFromFileController : IImportTasksFromFileController
 		foreach (ITask task in tasks)
 		{
 			_taskRs.Create(task);
-			task.Actions.ForEach(_actionRs.Create);
+			task.Operations.ForEach(_operationRs.Create);
 		}
 	}
 }

@@ -9,6 +9,6 @@ public static class DependencyInjection
 	{
 		return services
 			.AddRepository<ITask>()
-			.AddRepository<IAction>();
+			.AddRepository<IOperation>();
 	}
 }
