@@ -1,6 +1,4 @@
-﻿using Make.Application;
-using Make.DataAccess.InMemory;
-using Make.ImportTasks.FromFile;
+﻿using Make.ConsoleApp.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Make.ConsoleApp;
@@ -29,7 +27,7 @@ internal class Program
 	{
 		try
 		{
-			ServiceProvider serviceProvider = ConfigureServices();
+			IServiceProvider serviceProvider = ConfigureServices();
 			return serviceProvider.GetRequiredService<Application>();
 		}
 		catch (Exception ex)
@@ -38,14 +36,11 @@ internal class Program
 		}
 	}
 
-	private static ServiceProvider ConfigureServices()
+	private static IServiceProvider ConfigureServices()
 	{
 		var services = new ServiceCollection();
 		return services
-			.AddDataAccess()
-			.AddApplication()
-			.AddImporter()
-			.AddSingleton<Application>()
+			.RegisterDependencies()
 			.BuildServiceProvider();
 	}
 }

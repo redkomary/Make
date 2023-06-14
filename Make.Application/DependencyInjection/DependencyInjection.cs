@@ -2,7 +2,7 @@
 using Make.Application.RunTask.Controllers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Make.Application;
+namespace Make.Application.DependencyInjection;
 
 public static class DependencyInjection
 {

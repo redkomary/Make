@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Make.ImportTasks.FromFile;
+namespace Make.ImportTasks.FromFile.DependencyInjection;
 
 public static class DependencyInjection
 {

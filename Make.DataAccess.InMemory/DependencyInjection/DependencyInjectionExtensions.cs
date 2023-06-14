@@ -1,7 +1,7 @@
 ﻿using Make.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Make.DataAccess.InMemory;
+namespace Make.DataAccess.InMemory.DependencyInjection;
 
 public static class DependencyInjectionExtensions
 {
