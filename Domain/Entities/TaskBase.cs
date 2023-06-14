@@ -2,28 +2,14 @@
 
 public abstract class TaskBase : ITask
 {
-	private readonly List<ITask> _children;
+	public long Id { get; set; }
 
+	public string Name { get; set; } = string.Empty;
 
-	protected TaskBase(string name, IEnumerable<IAction> actions)
-	{
-		Name = name;
+	public ICollection<IAction> Actions { get; set; } = new List<IAction>();
 
-		Actions = actions.ToList().AsReadOnly();
+	public ICollection<ITask> Children { get; set; } = new List<ITask>();
 
-		_children = new List<ITask>();
-		Children = _children.AsReadOnly();
-	}
-
-
-	public string Name { get; }
-
-	public IEnumerable<IAction> Actions { get; }
-
-	public IEnumerable<ITask> Children { get; }
-
-
-	public void AddChild(ITask child) => _children.Add(child);
 
 	public abstract void Execute();
 

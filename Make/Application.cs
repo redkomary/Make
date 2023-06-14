@@ -1,6 +1,5 @@
 ﻿using Make.Application.Import.Controllers;
 using Make.Application.RunTask.Controllers;
-using Make.Domain.Entities;
 
 namespace Make.ConsoleApp;
 
@@ -30,10 +29,7 @@ internal class Application
 		string filePath = args[0];
 		string targetTaskName = args[1];
 
-		IEnumerable<ITask> tasks = _importTasksController.Import(filePath);
-
-		ITask targetTask = tasks.First(task => task.Name == targetTaskName);
-
-		await _runTaskController.Run(targetTask, CancellationToken.None);
+		_importTasksController.Import(filePath);
+		await _runTaskController.Run(targetTaskName, CancellationToken.None);
 	}
 }

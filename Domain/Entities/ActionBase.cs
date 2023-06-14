@@ -2,13 +2,9 @@
 
 public abstract class ActionBase : IAction
 {
-	protected ActionBase(string name)
-	{
-		Name = name;
-	}
+	public long Id { get; set; }
 
-
-	public string Name { get; }
+	public string Name { get; set; } = string.Empty;
 
 
 	public abstract void Execute();

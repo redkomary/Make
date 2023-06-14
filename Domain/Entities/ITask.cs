@@ -1,15 +1,13 @@
 ﻿namespace Make.Domain.Entities;
 
-public interface ITask
+public interface ITask : IEntity
 {
 	public string Name { get; }
 
-	public IEnumerable<IAction> Actions { get; }
+	public ICollection<IAction> Actions { get; }
 
-	public IEnumerable<ITask> Children { get; }
+	public ICollection<ITask> Children { get; }
 
-
-	public void AddChild(ITask child);
 
 	public void Execute();
 }

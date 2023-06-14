@@ -37,12 +37,16 @@ internal class TasksCreator
 	private ITask CreateTask(TaskInfo taskInfo)
 	{
 		IEnumerable<IAction> actions = taskInfo.Actions.Select(CreateAction);
-		return new PrintToConsoleTask(taskInfo.Header.Name, actions);
+		return new PrintToConsoleTask
+		{
+			Name = taskInfo.Header.Name,
+			Actions = actions.ToHashSet()
+		};
 	}
 
 	private IAction CreateAction(ActionInfo actionInfo)
 	{
-		return new PrintToConsoleAction(actionInfo.Name);
+		return new PrintToConsoleAction { Name = actionInfo.Name };
 	}
 
 
@@ -61,7 +65,7 @@ internal class TasksCreator
 			ITask subTask = _tasks.GetValueOrDefault(dependencyInfo.SubTaskName) ??
 				throw new KeyNotFoundException($"Задача \"{dependencyInfo.DependentTaskName}\" зависит от несуществующей задачи \"{dependencyInfo.SubTaskName}\".");
 
-			dependentTask.AddChild(subTask);
+			dependentTask.Children.Add(subTask);
 		}
 	}
 

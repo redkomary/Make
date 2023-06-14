@@ -1,4 +1,5 @@
 ﻿using Make.Application;
+using Make.DataAccess.InMemory;
 using Make.ImportTasks.FromFile;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -41,6 +42,7 @@ internal class Program
 	{
 		var services = new ServiceCollection();
 		return services
+			.AddDataAccess()
 			.AddApplication()
 			.AddImporter()
 			.AddSingleton<Application>()
