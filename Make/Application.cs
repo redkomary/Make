@@ -1,15 +1,14 @@
-﻿using Make.Application.Import.Controllers;
-using Make.Application.RunTask.Controllers;
+﻿using Make.Application.API;
 
 namespace Make.ConsoleApp;
 
 internal class Application
 {
-	private readonly ImportTasksController _importTasksController;
-	private readonly RunTaskController _runTaskController;
+	private readonly IImportTasksController _importTasksController;
+	private readonly IRunTaskController _runTaskController;
 
 
-	public Application(ImportTasksController importTasksController, RunTaskController runTaskController)
+	public Application(IImportTasksController importTasksController, IRunTaskController runTaskController)
 	{
 		_importTasksController = importTasksController;
 		_runTaskController = runTaskController;

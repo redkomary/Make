@@ -1,11 +1,12 @@
-﻿using Make.DataAccess;
+﻿using Make.Application.API;
+using Make.DataAccess;
 using Make.Domain.Entities;
 using Make.ImportTasks;
 using Make.Utilities;
 
 namespace Make.Application.Import.Controllers;
 
-public class ImportTasksController
+public class ImportTasksController : IImportTasksController
 {
 	private readonly ITasksImporter _importer;
 	private readonly IRepository<ITask> _taskRs;

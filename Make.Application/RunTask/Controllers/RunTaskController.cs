@@ -1,4 +1,5 @@
-﻿using Make.Application.RunTask.Entities;
+﻿using Make.Application.API;
+using Make.Application.RunTask.Entities;
 using Make.Application.RunTask.Services;
 using Make.DataAccess;
 using Make.Domain.Entities;
@@ -7,7 +8,7 @@ using Task = System.Threading.Tasks.Task;
 
 namespace Make.Application.RunTask.Controllers;
 
-public class RunTaskController
+public class RunTaskController : IRunTaskController
 {
 	private readonly IRepository<ITask> _taskRs;
 	private readonly TaskDependenciesBuilder _taskDependenciesBuilder = new();
