@@ -5,6 +5,10 @@
     <AssemblyName>make</AssemblyName>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Core\Make.Application\Make.Application.csproj" />
     <ProjectReference Include="..\DataAccess\Make.DataAccess.InMemory\Make.DataAccess.InMemory.csproj" />
