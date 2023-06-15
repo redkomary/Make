@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Make.Utilities\Make.Utilities.csproj" />
+    <ProjectReference Include="..\..\Utils\Make.Utilities\Make.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

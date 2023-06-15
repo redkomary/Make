@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Make.Application\Make.Application.csproj" />
-    <ProjectReference Include="..\Make.DataAccess.InMemory\Make.DataAccess.InMemory.csproj" />
+    <ProjectReference Include="..\Core\Make.Application\Make.Application.csproj" />
+    <ProjectReference Include="..\DataAccess\Make.DataAccess.InMemory\Make.DataAccess.InMemory.csproj" />
   </ItemGroup>
 
   <ItemGroup>

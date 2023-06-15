@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.ConsoleApp", "Make\Make.ConsoleApp.csproj", "{DA679F60-C137-4246-B187-B5D50CC04C33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.ConsoleApp", "Make.ConsoleApp\Make.ConsoleApp.csproj", "{DA679F60-C137-4246-B187-B5D50CC04C33}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.Domain", "Domain\Make.Domain.csproj", "{489E2152-0030-4F4F-980B-60215C8A33E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.Domain", "Core\Make.Domain\Make.Domain.csproj", "{489E2152-0030-4F4F-980B-60215C8A33E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.Utilities", "Make.Utilities\Make.Utilities.csproj", "{A623D5AF-ABBA-48D2-B3CD-6AFD6F61C100}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.Utilities", "Utils\Make.Utilities\Make.Utilities.csproj", "{A623D5AF-ABBA-48D2-B3CD-6AFD6F61C100}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E4665835-1906-4E39-AE8A-BCADCDF878EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.Application", "Make.Application\Make.Application.csproj", "{2EA48CB9-3C84-48C9-A125-C4CE8D6D5789}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.Application", "Core\Make.Application\Make.Application.csproj", "{2EA48CB9-3C84-48C9-A125-C4CE8D6D5789}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{082F2229-90DB-4B0A-A649-A0BBA6076BD2}"
 EndProject
@@ -22,15 +22,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{133DCFCE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{0C303A68-B510-409D-B089-737CCB000260}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.DataAccess", "Make.DataAccess\Make.DataAccess.csproj", "{E9E9DA56-FC36-443F-A976-0415741C9957}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.DataAccess", "DataAccess\Make.DataAccess\Make.DataAccess.csproj", "{E9E9DA56-FC36-443F-A976-0415741C9957}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.DataAccess.InMemory", "Make.DataAccess.InMemory\Make.DataAccess.InMemory.csproj", "{656638E1-9C35-48D6-BD0E-7AAF36C9C4F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.DataAccess.InMemory", "DataAccess\Make.DataAccess.InMemory\Make.DataAccess.InMemory.csproj", "{656638E1-9C35-48D6-BD0E-7AAF36C9C4F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.Application.API", "Make.Application.API\Make.Application.API.csproj", "{B5409224-AE99-4724-971D-8424E3632604}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.Application.API", "Core\Make.Application.API\Make.Application.API.csproj", "{B5409224-AE99-4724-971D-8424E3632604}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.ImportJobs", "Make.ImportJobs\Make.ImportJobs.csproj", "{C9B89B27-DECA-47AF-B510-5FF0A1E94725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.ImportJobs", "Modules\Make.ImportJobs\Make.ImportJobs.csproj", "{C9B89B27-DECA-47AF-B510-5FF0A1E94725}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.ImportJobs.FromFile", "Make.ImportJobs.FromFile\Make.ImportJobs.FromFile.csproj", "{737AE6C3-A408-4DFC-99AE-C08FE036DF81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Make.ImportJobs.FromFile", "Modules\Make.ImportJobs.FromFile\Make.ImportJobs.FromFile.csproj", "{737AE6C3-A408-4DFC-99AE-C08FE036DF81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

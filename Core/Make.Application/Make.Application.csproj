@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Make.Domain\Make.Domain.csproj" />
+    <ProjectReference Include="..\Make.Application.API\Make.Application.API.csproj" />
+    <ProjectReference Include="..\..\DataAccess\Make.DataAccess\Make.DataAccess.csproj" />
+    <ProjectReference Include="..\..\Modules\Make.ImportJobs.FromFile\Make.ImportJobs.FromFile.csproj" />
+    <ProjectReference Include="..\..\Modules\Make.ImportJobs\Make.ImportJobs.csproj" />
+  </ItemGroup>
+
+</Project>
