@@ -1,6 +1,6 @@
 ﻿using Make.Domain.Entities;
 
-namespace Make.Application.RunJob.Entities;
+namespace Make.Application.Import.Entities;
 
 internal class JobDependencies
 {

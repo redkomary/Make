@@ -1,7 +1,7 @@
-﻿using Make.Application.RunJob.Entities;
+﻿using Make.Application.Import.Entities;
 using Make.Domain.Entities;
 
-namespace Make.Application.RunJob.Services;
+namespace Make.Application.Import.Services;
 
 internal class JobDependenciesBuilder
 {

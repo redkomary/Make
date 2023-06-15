@@ -1,9 +1,9 @@
 ﻿using System.Collections.Concurrent;
-using Make.Application.RunJob.Entities;
+using Make.Application.Import.Entities;
 using Make.Domain.Entities;
 using Make.Utilities;
 
-namespace Make.Application.RunJob.Services;
+namespace Make.Application.Import.Services;
 
 internal class JobsRunner
 {

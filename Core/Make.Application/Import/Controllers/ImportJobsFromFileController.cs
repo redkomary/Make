@@ -1,4 +1,6 @@
 ﻿using Make.Application.API;
+using Make.Application.Import.Entities;
+using Make.Application.Import.Services;
 using Make.DataAccess;
 using Make.Domain.Entities;
 using Make.ImportJobs;
@@ -15,6 +17,9 @@ public class ImportJobsFromFileController : IImportJobsFromFileController
 	private readonly IJobsImporter<FilePathDataSource> _importer;
 	private readonly IRepository<IJob> _jobRs;
 	private readonly IRepository<IOperation> _operationRs;
+
+	private readonly JobDependenciesBuilder _dependenciesBuilder = new();
+	private readonly JobsRunner _runner = new();
 
 
 	/// <summary>
@@ -44,5 +49,15 @@ public class ImportJobsFromFileController : IImportJobsFromFileController
 			_jobRs.Create(job);
 			job.Operations.ForEach(_operationRs.Create);
 		}
+	}
+
+	/// <inheritdoc />
+	public async Task Run(string jobName, CancellationToken cancellationToken)
+	{
+		IJob job = _jobRs.GetAll().FirstOrDefault(job => job.Name == jobName) ??
+		           throw new KeyNotFoundException($"Задача \"{jobName}\" не найдена.");
+
+		IEnumerable<JobDependencies> jobsWithDependencies = _dependenciesBuilder.Build(job);
+		await _runner.Run(jobsWithDependencies, cancellationToken);
 	}
 }
