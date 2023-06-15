@@ -1,24 +1,24 @@
-﻿using Make.ImportTasks.FromFile.Entities;
+﻿using Make.ImportJobs.FromFile.Entities;
 
-namespace Make.ImportTasks.FromFile.Services;
+namespace Make.ImportJobs.FromFile.Services;
 
-internal class TaskInfoParser
+internal class JobInfoParser
 {
-	public TaskInfo Parse(IReadOnlyList<string> lines)
+	public JobInfo Parse(IReadOnlyList<string> lines)
 	{
 		if (!lines.Any())
 			throw new ArgumentException("Не удалось создать описание задачи из пустого блока.", nameof(lines));
 
-		TaskHeaderInfo header = ParseHeader(lines[0]);
+		JobHeaderInfo header = ParseHeader(lines[0]);
 
 		IEnumerable<OperationInfo> operations = lines
 			.Skip(1)
 			.Select(ParseOperation);
 
-		return new TaskInfo(header, operations);
+		return new JobInfo(header, operations);
 	}
 
-	private TaskHeaderInfo ParseHeader(string str)
+	private JobHeaderInfo ParseHeader(string str)
 	{
 		string[] parts = str.Split(':', StringSplitOptions.TrimEntries);
 
@@ -31,7 +31,7 @@ internal class TaskInfoParser
 			? parts[1].Split(Array.Empty<string>(), StringSplitOptions.RemoveEmptyEntries)
 			: Enumerable.Empty<string>();
 
-		return new TaskHeaderInfo(name, dependencies);
+		return new JobHeaderInfo(name, dependencies);
 	}
 
 	private OperationInfo ParseOperation(string str)

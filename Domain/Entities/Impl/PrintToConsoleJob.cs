@@ -2,7 +2,7 @@
 
 namespace Make.Domain.Entities.Impl;
 
-public class PrintToConsoleTask : TaskBase
+public class PrintToConsoleJob : JobBase
 {
 	public override void Execute()
 	{

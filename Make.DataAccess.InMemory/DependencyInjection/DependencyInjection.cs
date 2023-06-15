@@ -8,7 +8,7 @@ public static class DependencyInjection
 	public static IServiceCollection AddDataAccess(this IServiceCollection services)
 	{
 		return services
-			.AddRepository<ITask>()
+			.AddRepository<IJob>()
 			.AddRepository<IOperation>();
 	}
 }

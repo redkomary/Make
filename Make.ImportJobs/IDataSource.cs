@@ -1,4 +1,4 @@
-﻿namespace Make.ImportTasks;
+﻿namespace Make.ImportJobs;
 
 public interface IDataSource
 {

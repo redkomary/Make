@@ -1,23 +1,23 @@
 ﻿using Make.Domain.Entities;
 
-namespace Make.Application.RunTask.Entities;
+namespace Make.Application.RunJob.Entities;
 
-internal class TaskDependencies
+internal class JobDependencies
 {
 	/// <summary>
 	/// Конструктор.
 	/// </summary>
-	/// <param name="task">Текущая задача.</param>
-	public TaskDependencies(ITask task)
+	/// <param name="job">Текущая задача.</param>
+	public JobDependencies(IJob job)
 	{
-		Task = task;
+		Job = job;
 	}
 
 
 	/// <summary>
 	/// Текущая задача.
 	/// </summary>
-	public ITask Task { get; }
+	public IJob Job { get; }
 
 	/// <summary>
 	/// Готова к исполнению.
@@ -27,10 +27,10 @@ internal class TaskDependencies
 	/// <summary>
 	/// Задачи, от которых напрямую зависит текущая.
 	/// </summary>
-	public HashSet<ITask> OutComing { get; } = new();
+	public HashSet<IJob> OutComing { get; } = new();
 
 	/// <summary>
 	/// Задачи, которые напрямую зависят от текущей.
 	/// </summary>
-	public HashSet<ITask> InComing { get; } = new();
+	public HashSet<IJob> InComing { get; } = new();
 }

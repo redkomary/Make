@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Make.ImportTasks.FromFile.DependencyInjection;
+namespace Make.ImportJobs.FromFile.DependencyInjection;
 
 public static class DependencyInjection
 {
 	public static IServiceCollection AddImporter(this IServiceCollection services)
 	{
 		return services
-			.AddTransient<ITasksImporter<FilePathDataSource>, TasksImporterFromFile>();
+			.AddTransient<IJobsImporter<FilePathDataSource>, JobsImporterFromFile>();
 	}
 }

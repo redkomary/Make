@@ -1,6 +1,6 @@
 ﻿using Make.Application.DependencyInjection;
 using Make.DataAccess.InMemory.DependencyInjection;
-using Make.ImportTasks.FromFile.DependencyInjection;
+using Make.ImportJobs.FromFile.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Make.ConsoleApp.DependencyInjection;

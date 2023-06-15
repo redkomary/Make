@@ -8,8 +8,8 @@
     <ProjectReference Include="..\Domain\Make.Domain.csproj" />
     <ProjectReference Include="..\Make.Application.API\Make.Application.API.csproj" />
     <ProjectReference Include="..\Make.DataAccess\Make.DataAccess.csproj" />
-    <ProjectReference Include="..\Make.ImportTasks.FromFile\Make.ImportTasks.FromFile.csproj" />
-    <ProjectReference Include="..\Make.ImportTasks\Make.ImportTasks.csproj" />
+    <ProjectReference Include="..\Make.ImportJobs.FromFile\Make.ImportJobs.FromFile.csproj" />
+    <ProjectReference Include="..\Make.ImportJobs\Make.ImportJobs.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,7 +8,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Make.Application\Make.Application.csproj" />
     <ProjectReference Include="..\Make.DataAccess.InMemory\Make.DataAccess.InMemory.csproj" />
-    <ProjectReference Include="..\Make.ImportTasks.FromFile\Make.ImportTasks.FromFile.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace Make.ImportTasks.FromFile.Entities;
+﻿namespace Make.ImportJobs.FromFile.Entities;
 
 internal class OperationInfo
 {

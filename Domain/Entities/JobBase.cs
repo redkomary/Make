@@ -1,6 +1,6 @@
 ﻿namespace Make.Domain.Entities;
 
-public abstract class TaskBase : ITask
+public abstract class JobBase : IJob
 {
 	public long Id { get; set; }
 
@@ -8,7 +8,7 @@ public abstract class TaskBase : ITask
 
 	public ICollection<IOperation> Operations { get; set; } = new List<IOperation>();
 
-	public ICollection<ITask> Children { get; set; } = new List<ITask>();
+	public ICollection<IJob> Children { get; set; } = new List<IJob>();
 
 
 	public abstract void Execute();

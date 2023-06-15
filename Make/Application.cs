@@ -4,16 +4,16 @@ namespace Make.ConsoleApp;
 
 internal class Application
 {
-	private readonly IImportTasksFromFileController _importTasksController;
-	private readonly IRunTaskController _runTaskController;
+	private readonly IImportJobsFromFileController _importJobsController;
+	private readonly IRunJobController _runJobController;
 
 
 	public Application(
-		IImportTasksFromFileController importTasksController,
-		IRunTaskController runTaskController)
+		IImportJobsFromFileController importJobsController,
+		IRunJobController runJobController)
 	{
-		_importTasksController = importTasksController;
-		_runTaskController = runTaskController;
+		_importJobsController = importJobsController;
+		_runJobController = runJobController;
 	}
 
 
@@ -28,9 +28,9 @@ internal class Application
 		}
 
 		string filePath = args[0];
-		string targetTaskName = args[1];
+		string targetJobName = args[1];
 
-		_importTasksController.Import(filePath);
-		await _runTaskController.Run(targetTaskName, CancellationToken.None);
+		_importJobsController.Import(filePath);
+		await _runJobController.Run(targetJobName, CancellationToken.None);
 	}
 }

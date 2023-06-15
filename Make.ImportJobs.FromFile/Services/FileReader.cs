@@ -1,4 +1,4 @@
-﻿namespace Make.ImportTasks.FromFile.Services;
+﻿namespace Make.ImportJobs.FromFile.Services;
 
 internal class FileReader
 {

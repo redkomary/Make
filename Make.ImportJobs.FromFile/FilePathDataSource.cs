@@ -1,4 +1,4 @@
-﻿namespace Make.ImportTasks.FromFile;
+﻿namespace Make.ImportJobs.FromFile;
 
 public class FilePathDataSource : IDataSource
 {
