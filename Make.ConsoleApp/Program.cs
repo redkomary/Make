@@ -1,6 +1,9 @@
 ﻿using JetBrains.Annotations;
+
 using Make.ConsoleApp.DependencyInjection;
+
 using Microsoft.Extensions.DependencyInjection;
+
 
 namespace Make.ConsoleApp;
 

@@ -1,5 +1,6 @@
 ﻿using Make.Utilities;
 
+
 namespace Make.Domain.Entities.Impl;
 
 /// <summary>

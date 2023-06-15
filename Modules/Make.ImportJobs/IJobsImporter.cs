@@ -1,5 +1,6 @@
 ﻿using Make.Domain.Entities;
 
+
 namespace Make.ImportJobs;
 
 /// <summary>

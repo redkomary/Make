@@ -3,6 +3,7 @@ using Make.Domain.Entities.Impl;
 using Make.ImportJobs.FromFile.Entities;
 using Make.Utilities;
 
+
 namespace Make.ImportJobs.FromFile.Services;
 
 internal class JobsCreator

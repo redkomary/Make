@@ -1,5 +1,7 @@
 ﻿using Make.Domain.Entities;
+
 using Microsoft.Extensions.DependencyInjection;
+
 
 namespace Make.DataAccess.InMemory.DependencyInjection;
 

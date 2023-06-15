@@ -1,5 +1,6 @@
 ﻿using Make.ImportJobs.FromFile.Entities;
 
+
 namespace Make.ImportJobs.FromFile.Services;
 
 internal class JobInfoParser
