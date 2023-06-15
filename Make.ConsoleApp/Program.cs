@@ -1,8 +1,10 @@
-﻿using Make.ConsoleApp.DependencyInjection;
+﻿using JetBrains.Annotations;
+using Make.ConsoleApp.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Make.ConsoleApp;
 
+[UsedImplicitly]
 internal class Program
 {
 	public static async Task Main(string[] args)

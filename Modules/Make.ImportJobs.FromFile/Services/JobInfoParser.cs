@@ -18,7 +18,7 @@ internal class JobInfoParser
 		return new JobInfo(header, operations);
 	}
 
-	private JobHeaderInfo ParseHeader(string str)
+	private static JobHeaderInfo ParseHeader(string str)
 	{
 		string[] parts = str.Split(':', StringSplitOptions.TrimEntries);
 
@@ -34,7 +34,7 @@ internal class JobInfoParser
 		return new JobHeaderInfo(name, dependencies);
 	}
 
-	private OperationInfo ParseOperation(string str)
+	private static OperationInfo ParseOperation(string str)
 	{
 		string name = str.Trim();
 		return new OperationInfo(name);

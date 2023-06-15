@@ -34,7 +34,7 @@ internal class JobsCreator
 		}
 	}
 
-	private IJob CreateJob(JobInfo jobInfo)
+	private static IJob CreateJob(JobInfo jobInfo)
 	{
 		IEnumerable<IOperation> operations = jobInfo.Operations.Select(CreateOperation);
 		return new PrintToConsoleJob
@@ -44,13 +44,13 @@ internal class JobsCreator
 		};
 	}
 
-	private IOperation CreateOperation(OperationInfo operationInfo)
+	private static IOperation CreateOperation(OperationInfo operationInfo)
 	{
 		return new PrintToConsoleOperation { Name = operationInfo.Name };
 	}
 
 
-	private IEnumerable<DependencyInfo> CreateJobDependencies(JobHeaderInfo jobHeader)
+	private static IEnumerable<DependencyInfo> CreateJobDependencies(JobHeaderInfo jobHeader)
 	{
 		return jobHeader.Dependencies
 			.Select(dependencyName => new DependencyInfo(jobHeader.Name, dependencyName));

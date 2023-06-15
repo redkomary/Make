@@ -7,7 +7,7 @@ internal class FileReader
 		return ReadInternal(filePath);
 	}
 
-	private IEnumerable<IReadOnlyList<string>> ReadInternal(string filePath)
+	private static IEnumerable<IReadOnlyList<string>> ReadInternal(string filePath)
 	{
 		IEnumerable<string> lines = ReadLinesFromFile(filePath);
 		int i = 0;
@@ -40,7 +40,7 @@ internal class FileReader
 		yield return currentBlock.AsReadOnly();
 	}
 
-	private IEnumerable<string> ReadLinesFromFile(string filePath)
+	private static IEnumerable<string> ReadLinesFromFile(string filePath)
 	{
 		if (!File.Exists(filePath))
 			throw new FileNotFoundException("Файл не существует.", filePath);
