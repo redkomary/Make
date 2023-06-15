@@ -7,6 +7,9 @@ using Make.Utilities;
 
 namespace Make.Application.Import.Controllers;
 
+/// <summary>
+/// Контроллер, предоставляющий методы для инструмента импорта задач из файла.
+/// </summary>
 public class ImportJobsFromFileController : IImportJobsFromFileController
 {
 	private readonly IJobsImporter<FilePathDataSource> _importer;
@@ -14,6 +17,12 @@ public class ImportJobsFromFileController : IImportJobsFromFileController
 	private readonly IRepository<IOperation> _operationRs;
 
 
+	/// <summary>
+	/// Конструктор.
+	/// </summary>
+	/// <param name="importer">Сервис импорта задач.</param>
+	/// <param name="jobRs">Репозиторий задач.</param>
+	/// <param name="operationRs">Репозиторий действий.</param>
 	public ImportJobsFromFileController(
 		IJobsImporter<FilePathDataSource> importer,
 		IRepository<IJob> jobRs,
@@ -25,6 +34,7 @@ public class ImportJobsFromFileController : IImportJobsFromFileController
 	}
 
 
+	/// <inheritdoc />
 	public void Import(string filePath)
 	{
 		var dataSource = new FilePathDataSource(filePath);

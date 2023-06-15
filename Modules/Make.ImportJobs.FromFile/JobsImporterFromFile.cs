@@ -4,6 +4,9 @@ using Make.ImportJobs.FromFile.Services;
 
 namespace Make.ImportJobs.FromFile;
 
+/// <summary>
+/// Сервис импорта задач.
+/// </summary>
 public class JobsImporterFromFile : IJobsImporter<FilePathDataSource>
 {
 	private readonly FileReader _fileReader = new();
@@ -11,6 +14,7 @@ public class JobsImporterFromFile : IJobsImporter<FilePathDataSource>
 	private readonly JobsCreator _creator  = new();
 
 
+	/// <inheritdoc />
 	public IEnumerable<IJob> ImportFrom(FilePathDataSource filePathSource)
 	{
 		IEnumerable<IReadOnlyList<string>> blocks = _fileReader.Read(filePathSource.FilePath);

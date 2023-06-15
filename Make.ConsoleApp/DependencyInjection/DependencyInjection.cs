@@ -5,8 +5,14 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Make.ConsoleApp.DependencyInjection;
 
+/// <summary>
+/// Сервис внедрения зависимостей.
+/// </summary>
 public static class DependencyInjection
 {
+	/// <summary>
+	/// Добавляет зависимости.
+	/// </summary>
 	public static IServiceCollection RegisterDependencies(this IServiceCollection services)
 	{
 		return services

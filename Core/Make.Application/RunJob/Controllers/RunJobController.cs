@@ -6,6 +6,9 @@ using Make.Domain.Entities;
 
 namespace Make.Application.RunJob.Controllers;
 
+/// <summary>
+/// Контроллер, предоставляющий методы выполнения задачи вместе со всеми её зависимостями.
+/// </summary>
 public class RunJobController : IRunJobController
 {
 	private readonly IRepository<IJob> _jobRs;
@@ -13,12 +16,17 @@ public class RunJobController : IRunJobController
 	private readonly JobsRunner _runner = new();
 
 
+	/// <summary>
+	/// Конструктор.
+	/// </summary>
+	/// <param name="jobRs">Репозиторий задач.</param>
 	public RunJobController(IRepository<IJob> jobRs)
 	{
 		_jobRs = jobRs;
 	}
 
 
+	/// <inheritdoc />
 	public async Task Run(string jobName, CancellationToken cancellationToken)
 	{
 		IJob job = _jobRs.GetAll().FirstOrDefault(job => job.Name == jobName) ??
