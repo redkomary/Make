@@ -3,7 +3,7 @@
 namespace Make.DataAccess.InMemory;
 
 /// <summary>
-/// Репозиторий, который реализует хранение данных в памяти приложения.
+/// Репозиторий, который реализует хранение данных в памяти исполняемого приложения.
 /// </summary>
 public class InMemoryRepository<TEntity> : IRepository<TEntity>
 	where TEntity : IEntity
