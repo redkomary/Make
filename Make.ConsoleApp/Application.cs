@@ -5,10 +5,10 @@ namespace Make.ConsoleApp;
 
 internal class Application
 {
-	private readonly IImportJobsFromFileController _importJobsController;
+	private readonly IImportJobsController _importJobsController;
 
 
-	public Application(IImportJobsFromFileController importJobsController)
+	public Application(IImportJobsController importJobsController)
 	{
 		_importJobsController = importJobsController;
 	}

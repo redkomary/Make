@@ -1,9 +1,9 @@
 ﻿namespace Make.Application.API;
 
 /// <summary>
-/// Контроллер, предоставляющий методы для инструмента импорта задач из файла.
+/// Контроллер, предоставляющий методы для инструмента импорта задач.
 /// </summary>
-public interface IImportJobsFromFileController
+public interface IImportJobsController
 {
 	/// <summary>
 	/// Загрузить задачи из файла.

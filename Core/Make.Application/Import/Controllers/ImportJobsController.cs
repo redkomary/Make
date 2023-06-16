@@ -11,9 +11,9 @@ using Make.Utilities;
 namespace Make.Application.Import.Controllers;
 
 /// <summary>
-/// Контроллер, предоставляющий методы для инструмента импорта задач из файла.
+/// Контроллер, предоставляющий методы для инструмента импорта задач.
 /// </summary>
-public class ImportJobsFromFileController : IImportJobsFromFileController
+public class ImportJobsController : IImportJobsController
 {
 	private readonly IJobsImporter<FilePathDataSource> _importer;
 	private readonly IRepository<IJob> _jobRs;
@@ -26,10 +26,10 @@ public class ImportJobsFromFileController : IImportJobsFromFileController
 	/// <summary>
 	/// Конструктор.
 	/// </summary>
-	/// <param name="importer">Сервис импорта задач.</param>
+	/// <param name="importer">Сервис импорта задач из файла.</param>
 	/// <param name="jobRs">Репозиторий задач.</param>
 	/// <param name="operationRs">Репозиторий действий.</param>
-	public ImportJobsFromFileController(
+	public ImportJobsController(
 		IJobsImporter<FilePathDataSource> importer,
 		IRepository<IJob> jobRs,
 		IRepository<IOperation> operationRs)
