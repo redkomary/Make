@@ -22,25 +22,25 @@ internal class JobDependenciesBuilder
 		_cache[job] = vertex;
 		vertex.ProcessingStatus = ProcessingStatus.InProgress;
 
-		foreach (IJob childJob in job.Children)
+		foreach (IJob subJob in job.SubJobs)
 		{
-			bool cycleFound = _cache.TryGetValue(childJob, out Vertex? childJobVertex) &&
-			                  childJobVertex.ProcessingStatus == ProcessingStatus.InProgress;
+			bool cycleFound = _cache.TryGetValue(subJob, out Vertex? subJobVertex) &&
+			                  subJobVertex.ProcessingStatus == ProcessingStatus.InProgress;
 
 			if (cycleFound)
 			{
 				throw new InvalidOperationException($"Невозможно выполнить задачу \"{job.Name}\", " +
-				                                    $"из-за циклической ссылки на задачу \"{childJob.Name}\".");
+				                                    $"из-за циклической ссылки на задачу \"{subJob.Name}\".");
 			}
 
-			vertex.AddOutComingJob(childJob);
+			vertex.AddOutComingJob(subJob);
 
-			if (childJobVertex == null || childJobVertex.ProcessingStatus == ProcessingStatus.NotStarted)
+			if (subJobVertex == null || subJobVertex.ProcessingStatus == ProcessingStatus.NotStarted)
 			{
-				BuildRecursively(childJob);
+				BuildRecursively(subJob);
 			}
 
-			_cache[childJob].AddInComingJob(job);
+			_cache[subJob].AddInComingJob(job);
 		}
 
 		_cache[job].ProcessingStatus = ProcessingStatus.Done;

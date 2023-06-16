@@ -18,7 +18,7 @@ public interface IJob : IEntity
 	/// <summary>
 	/// Задачи, от которых зависит данная.
 	/// </summary>
-	public ICollection<IJob> Children { get; }
+	public ICollection<IJob> SubJobs { get; }
 
 
 	/// <summary>

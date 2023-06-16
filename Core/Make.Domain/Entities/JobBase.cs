@@ -15,7 +15,7 @@ public abstract class JobBase : IJob
 	public ICollection<IOperation> Operations { get; set; } = new List<IOperation>();
 
 	/// <inheritdoc />
-	public ICollection<IJob> Children { get; set; } = new List<IJob>();
+	public ICollection<IJob> SubJobs { get; set; } = new List<IJob>();
 
 
 	/// <inheritdoc />

@@ -66,7 +66,7 @@ internal class JobsCreator
 			IJob subJob = _jobs.GetValueOrDefault(dependencyInfo.SubJobName) ??
 				throw new KeyNotFoundException($"Задача \"{dependencyInfo.DependentJobName}\" зависит от несуществующей задачи \"{dependencyInfo.SubJobName}\".");
 
-			dependentJob.Children.Add(subJob);
+			dependentJob.SubJobs.Add(subJob);
 		}
 	}
 
