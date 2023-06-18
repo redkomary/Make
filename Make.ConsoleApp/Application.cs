@@ -27,7 +27,17 @@ internal class Application
 		string filePath = args[0];
 		string targetJobName = args[1];
 
-		_importJobsController.Import(filePath);
-		await _importJobsController.Run(targetJobName, CancellationToken.None);
+		var cancellationTokenSource = new CancellationTokenSource();
+		CancellationToken cancellationToken = cancellationTokenSource.Token;
+
+		try
+		{
+			_importJobsController.Import(filePath, cancellationToken);
+			await _importJobsController.Run(targetJobName, cancellationToken);
+		}
+		catch (OperationCanceledException)
+		{
+			Console.WriteLine("Операция отменена пользователем.");
+		}
 	}
 }

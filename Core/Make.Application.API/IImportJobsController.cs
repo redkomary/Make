@@ -9,7 +9,8 @@ public interface IImportJobsController
 	/// Загрузить задачи из файла.
 	/// </summary>
 	/// <param name="filePath">Путь к файлу импорта.</param>
-	public void Import(string filePath);
+	/// <param name="cancellationToken">Токен отмены операции.</param>
+	public void Import(string filePath, CancellationToken cancellationToken);
 
 	/// <summary>
 	/// Запускает выполнение задачи вместе со всеми её зависимостями.

@@ -12,18 +12,21 @@ internal class JobsCreator
 	private readonly List<DependencyInfo> _dependencies = new();
 
 
-	public IEnumerable<IJob> Create(IEnumerable<JobInfo> jobInfos)
+	public IEnumerable<IJob> Create(IEnumerable<JobInfo> jobInfos, CancellationToken cancellationToken)
 	{
-		CreateJobs(jobInfos);
-		LinkJobs();
+		CreateJobs(jobInfos, cancellationToken);
+		LinkJobs(cancellationToken);
 
 		return _jobs.Values;
 	}
 
-	private void CreateJobs(IEnumerable<JobInfo> jobInfos)
+	private void CreateJobs(IEnumerable<JobInfo> jobInfos, CancellationToken cancellationToken)
 	{
 		foreach (JobInfo jobInfo in jobInfos)
 		{
+			if (cancellationToken.IsCancellationRequested)
+				throw new OperationCanceledException();
+
 			if (_jobs.ContainsKey(jobInfo.Header.Name))
 				throw new InvalidOperationException($"Задача \"{jobInfo.Header.Name}\" уже загружена. Наименование задачи должно быть уникальным.");
 
@@ -57,10 +60,13 @@ internal class JobsCreator
 			.Select(dependencyName => new DependencyInfo(jobHeader.Name, dependencyName));
 	}
 
-	private void LinkJobs()
+	private void LinkJobs(CancellationToken cancellationToken)
 	{
 		foreach (DependencyInfo dependencyInfo in _dependencies)
 		{
+			if (cancellationToken.IsCancellationRequested)
+				throw new OperationCanceledException();
+
 			IJob dependentJob = _jobs[dependencyInfo.DependentJobName];
 
 			IJob subJob = _jobs.GetValueOrDefault(dependencyInfo.SubJobName) ??

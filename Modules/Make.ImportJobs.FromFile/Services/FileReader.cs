@@ -2,12 +2,13 @@
 
 internal class FileReader
 {
-	public IEnumerable<IReadOnlyList<string>> Read(string filePath)
+	public IEnumerable<IReadOnlyList<string>> Read(string filePath, CancellationToken cancellationToken)
 	{
-		return ReadInternal(filePath);
+		return ReadInternal(filePath, cancellationToken);
 	}
 
-	private static IEnumerable<IReadOnlyList<string>> ReadInternal(string filePath)
+
+	private static IEnumerable<IReadOnlyList<string>> ReadInternal(string filePath, CancellationToken cancellationToken)
 	{
 		IEnumerable<string> lines = ReadLinesFromFile(filePath);
 		int i = 0;
@@ -15,6 +16,9 @@ internal class FileReader
 		var currentBlock = new List<string>();
 		foreach (string line in lines)
 		{
+			if (cancellationToken.IsCancellationRequested)
+				throw new OperationCanceledException();
+
 			if (string.IsNullOrWhiteSpace(line))
 			{
 				throw new FormatException($"Ошибка чтения данных из файла \"{filePath}\", строка {i + 1}: " +

@@ -15,7 +15,7 @@ internal class JobsRunner
 
 	public async Task Run(IEnumerable<JobDependencies> jobs, CancellationToken cancellationToken)
 	{
-		jobs.ForEach(t => _allJobs.Add(t.Job, t));
+		jobs.ForEach(j => _allJobs.Add(j.Job, j));
 		await Run(cancellationToken);
 	}
 

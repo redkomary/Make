@@ -41,10 +41,10 @@ public class ImportJobsController : IImportJobsController
 
 
 	/// <inheritdoc />
-	public void Import(string filePath)
+	public void Import(string filePath, CancellationToken cancellationToken)
 	{
 		var dataSource = new FilePathDataSource(filePath);
-		IEnumerable<IJob> jobs = _importer.ImportFrom(dataSource);
+		IEnumerable<IJob> jobs = _importer.ImportFrom(dataSource, cancellationToken);
 		foreach (IJob job in jobs)
 		{
 			_jobRs.Create(job);
