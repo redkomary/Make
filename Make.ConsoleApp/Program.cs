@@ -12,8 +12,6 @@ internal class Program
 {
 	public static async Task Main(string[] args)
 	{
-		//args = new[] { "makefile.txt", "Target_05" };
-
 		try
 		{
 			Application application = InitializeApplication();

@@ -18,10 +18,4 @@
     <ProjectReference Include="..\DataAccess\Make.DataAccess.InMemory\Make.DataAccess.InMemory.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="makefile.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
