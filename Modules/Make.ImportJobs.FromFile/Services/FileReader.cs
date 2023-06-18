@@ -21,8 +21,9 @@ internal class FileReader
 
 			if (string.IsNullOrWhiteSpace(line))
 			{
-				throw new FormatException($"Ошибка чтения данных из файла \"{filePath}\", строка {i + 1}: " +
-				                          $"Строка не может быть пустой.");
+				throw new InvalidOperationException(
+					$"Ошибка чтения данных из файла \"{filePath}\", строка {i + 1}: " +
+					$"Строка не может быть пустой.");
 			}
 
 			bool isNewBlockStarting = !char.IsWhiteSpace(line[0]);
@@ -35,6 +36,13 @@ internal class FileReader
 			}
 			else
 			{
+				if (!currentBlock.Any())
+				{
+					throw new InvalidOperationException(
+						$"Ошибка чтения данных из файла \"{filePath}\", строка {i + 1}: " +
+						$"Описание действий должно следовать за заголовком задачи.");
+				}
+
 				currentBlock.Add(line);
 			}
 
