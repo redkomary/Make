@@ -32,8 +32,8 @@ internal class Application
 
 		try
 		{
-			_importJobsController.Import(filePath, cancellationToken);
-			await _importJobsController.Run(targetJobName, cancellationToken);
+			_importJobsController.ImportJobsFromFile(filePath, cancellationToken);
+			await _importJobsController.RunJob(targetJobName, cancellationToken);
 		}
 		catch (OperationCanceledException)
 		{

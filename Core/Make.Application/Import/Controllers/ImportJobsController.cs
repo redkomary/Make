@@ -41,7 +41,7 @@ public class ImportJobsController : IImportJobsController
 
 
 	/// <inheritdoc />
-	public void Import(string filePath, CancellationToken cancellationToken)
+	public void ImportJobsFromFile(string filePath, CancellationToken cancellationToken)
 	{
 		var dataSource = new FilePathDataSource(filePath);
 		IEnumerable<IJob> jobs = _importer.ImportFrom(dataSource, cancellationToken);
@@ -53,7 +53,7 @@ public class ImportJobsController : IImportJobsController
 	}
 
 	/// <inheritdoc />
-	public async Task Run(string jobName, CancellationToken cancellationToken)
+	public async Task RunJob(string jobName, CancellationToken cancellationToken)
 	{
 		IJob job = _jobRs.GetAll().FirstOrDefault(job => job.Name == jobName) ??
 		           throw new KeyNotFoundException($"Задача \"{jobName}\" не найдена.");

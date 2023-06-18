@@ -61,6 +61,7 @@ internal class JobDependenciesBuilder
 			Job = new JobDependencies(job);
 		}
 
+
 		public JobDependencies Job { get; }
 
 		public ProcessingStatus ProcessingStatus { get; set; }

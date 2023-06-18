@@ -21,7 +21,7 @@ internal class JobDependencies
 	public IJob Job { get; }
 
 	/// <summary>
-	/// Готова к исполнению.
+	/// Текущая задача готова к исполнению.
 	/// </summary>
 	public bool ReadyToExecute => !OutComing.Any();
 
